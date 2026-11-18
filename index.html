@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOB QUEST — Become the Best Applicant!</title>
+<style>
+:root{--navy:#172554;--blue:#3157d5;--cyan:#dff6f4;--ink:#18223b;--muted:#667085;--paper:#f5f7fc;--white:#fff;--line:#e5e9f2;--green:#16845b;--orange:#f0a43a;--shadow:0 14px 40px #18234a12}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:13px;padding:12px 18px;font-weight:750;background:var(--blue);color:white;transition:.18s}button:hover{filter:brightness(1.06);transform:translateY(-1px)}button:disabled{opacity:.45;cursor:not-allowed;transform:none}.secondary{background:#edf1ff;color:var(--blue)}.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}.danger{background:#fff0f0;color:#b42318}
+header{background:var(--navy);color:white;padding:15px max(20px,calc((100% - 1080px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:950;letter-spacing:.08em;font-size:18px}.brand span{color:#74ded4}.header-actions{display:flex;gap:8px;align-items:center}
+main{max-width:1000px;margin:30px auto;padding:0 18px 60px}.hero{background:linear-gradient(125deg,#172554,#304fc1);color:white;border-radius:25px;padding:34px;display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:center;box-shadow:var(--shadow)}
+.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:11px;font-weight:900;color:#a8eee6}.hero h1{font-size:clamp(32px,6vw,52px);line-height:1.03;margin:10px 0 14px}.hero p{color:#e0e7ff;max-width:560px}.hero-art{font-size:100px;text-align:center;filter:drop-shadow(0 12px 14px #0003)}
+.panel,.card{background:white;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow)}.panel{margin-top:20px}.start-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.start-card{border:1px solid var(--line);border-radius:17px;padding:20px;background:#fff;text-align:left;color:var(--ink)}.start-card strong{display:block;font-size:18px;margin:7px 0}.start-card span{color:var(--muted);font-size:14px}.start-card .emoji{font-size:30px}
+.hidden{display:none!important}.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.step{font-size:12px;font-weight:900;letter-spacing:.12em;color:var(--blue);text-transform:uppercase}.progress{height:8px;background:#e9edf6;border-radius:20px;overflow:hidden;margin:12px 0 24px}.progress>div{height:100%;background:linear-gradient(90deg,#3157d5,#49c5b7);width:0;transition:width .3s}
+h2{font-size:28px;line-height:1.15;margin:5px 0 8px}h3{margin:0 0 7px}p{margin:6px 0 14px}.muted{color:var(--muted)}.vacancies{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.vacancy{border:2px solid var(--line);border-radius:17px;padding:17px;background:white;color:var(--ink);text-align:left}.vacancy.selected{border-color:var(--blue);background:#f2f5ff}.vacancy .emoji{font-size:28px}.vacancy p{font-size:13px;color:var(--muted)}.tag{display:inline-block;border-radius:20px;background:#edf1ff;color:#3157d5;font-size:11px;font-weight:800;padding:4px 9px;margin:3px 3px 3px 0}
+label{display:block;font-size:13px;font-weight:800;margin:13px 0 6px}input,select,textarea{width:100%;border:1px solid #d9dfeb;border-radius:11px;padding:12px;background:#fff;color:var(--ink);outline:none}input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #3157d51a}textarea{min-height:90px;resize:vertical}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.question{background:#f8f9fd;border:1px solid var(--line);border-radius:15px;padding:17px;margin:13px 0}.question p{font-weight:750;margin:0 0 12px}.options{display:grid;gap:8px}.option{background:white;border:1px solid #dfe4ef;color:var(--ink);text-align:left;font-weight:600;padding:10px 13px;border-radius:10px}.option.chosen{border-color:var(--blue);background:#eef2ff;color:var(--blue)}.feedback{font-size:13px;font-weight:700;margin-top:8px}.correct{color:var(--green)}.wrong{color:#b54708}.actions{display:flex;justify-content:space-between;gap:10px;margin-top:22px}.actions .right{display:flex;gap:9px}.scoreline{font-size:13px;color:var(--muted)}.result{text-align:center;padding:15px}.result .big{font-size:70px}.result h2{font-size:34px}.result-score{font-size:44px;font-weight:950;color:var(--blue)}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.tablewrap{overflow-x:auto}.small{font-size:12px}.notice{background:#fff8e8;border:1px solid #f5dfaa;color:#76520b;padding:12px 14px;border-radius:12px;font-size:13px;margin:14px 0}
+.modal-backdrop{position:fixed;inset:0;background:#101936a8;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal-card{background:#fff;border-radius:20px;padding:22px;width:min(760px,100%);max-height:88vh;overflow:auto;box-shadow:0 25px 80px #0004}
+.answer-section{border:1px solid var(--line);border-radius:13px;padding:15px;margin:12px 0;background:#fbfcff}
+.answer-row{padding:9px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.answer-row:last-child{border-bottom:0}
+.answer-question{font-weight:800;margin-bottom:4px}
+.answer-text{white-space:pre-wrap;color:#344054}
+
+.teacher-tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.pill{display:inline-flex;padding:5px 10px;border-radius:20px;background:#eaf8f2;color:#13734f;font-size:12px;font-weight:800}
+footer{text-align:center;color:#8992a7;font-size:12px;padding:24px}
+@media(max-width:700px){header{padding:13px 16px}.hero{grid-template-columns:1fr;padding:25px}.hero-art{display:none}.start-grid,.vacancies,.formgrid{grid-template-columns:1fr}.panel{padding:18px}main{margin:18px auto}.header-actions button{padding:9px 11px;font-size:12px}.topline{align-items:flex-start}}
+</style>
+</head>
+<body>
+<header><div class="brand">JOB<span>QUEST</span> ✦</div><div class="header-actions"><button class="secondary" onclick="showHome()">Home</button><button class="ghost" onclick="showTeacher()">Teacher mode</button></div></header>
+<main>
+<section id="home">
+ <div class="hero"><div><div class="eyebrow">Your career adventure starts here</div><h1>JOB QUEST:<br>Get the Job!</h1><p>Choose a vacancy, prove your English, complete an application form and impress your future employer.</p><button onclick="startGame()">Start the quest →</button></div><div class="hero-art">💼</div></div>
+ <div class="panel"><h2>Ready to become the best applicant?</h2><p class="muted">Complete four stages and collect points. You can use your real name or a nickname.</p><div class="start-grid">
+  <button class="start-card" onclick="startGame()"><div class="emoji">🎯</div><strong>I'm a job applicant</strong><span>Play the student version. No account needed.</span></button>
+  <button class="start-card" onclick="showTeacher()"><div class="emoji">🧑‍🏫</div><strong>I'm the teacher</strong><span>Review saved attempts and export results on this device.</span></button>
+ </div><div class="notice">Teacher note: this version stores results in this browser on this device. It does not sync students' phones automatically. For a shared live classroom leaderboard, the site needs a connected database and hosting.</div></div>
+</section>
+
+<section id="game" class="hidden">
+ <div class="panel">
+  <div class="topline"><div><div class="step" id="stepLabel">Stage 1 of 4</div><div class="scoreline">Applicant: <b id="playerLabel">—</b> · Score: <b id="scoreLabel">0</b></div></div><button class="ghost" onclick="showHome()">Exit</button></div>
+  <div class="progress"><div id="progressBar"></div></div>
+  <div id="stageContent"></div>
+ </div>
+</section>
+
+<section id="teacher" class="hidden">
+ <div class="panel"><div class="topline"><div><div class="step">Teacher dashboard</div><h2>Class results</h2></div><button class="ghost" onclick="showHome()">Back</button></div>
+ <div id="teacherLogin"><p class="muted">Enter the teacher PIN to view results.</p><label for="pin">Teacher PIN</label><input id="pin" type="password" placeholder="Default PIN: 2468"><div class="actions"><span></span><button onclick="unlockTeacher()">Open dashboard</button></div></div>
+ <div id="teacherDashboard" class="hidden">
+  <div class="notice">Results are saved locally in this browser. Students who use different phones will not appear here unless a shared database is added.</div>
+  <div class="teacher-tools"><button onclick="exportCSV()">Download CSV</button><button class="secondary" onclick="refreshTeacher()">Refresh</button><button class="danger" onclick="clearResults()">Clear all results</button></div>
+  <div class="tablewrap"><table><thead><tr><th>Name</th><th>Vacancy</th><th>Score</th><th>Completed</th><th>Interview answers</th></tr></thead><tbody id="resultsBody"></tbody></table></div>
+ </div></div>
+</section>
+</main>
+
+<div id="answersModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="answersTitle" onclick="if(event.target===this)closeAnswers()">
+  <div class="modal-card">
+    <div class="topline"><div><div class="step">Student submission</div><h2 id="answersTitle">Application & interview</h2></div><button class="ghost" onclick="closeAnswers()">Close ✕</button></div>
+    <div id="answersDetails"></div>
+    <div class="actions"><span></span><button onclick="closeAnswers()">Done</button></div>
+  </div>
+</div>
+
+<footer>JOB QUEST · English for employment · Classroom activity</footer>
+<script>
+const jobs={
+ Secretary:{emoji:"🗂️",salary:"€1,900–€2,300 per month",requirements:"Good computer skills, communication skills, English",duties:"Answer phone calls, arrange meetings, write emails"},
+ Waiter:{emoji:"☕",salary:"€12–€15 per hour",requirements:"Friendly personality, teamwork, customer service",duties:"Welcome customers, take orders, serve food and drinks"},
+ Cook:{emoji:"👩‍🍳",salary:"€2,000–€2,500 per month",requirements:"Cooking skills, experience, ability to work under pressure",duties:"Prepare meals, keep the kitchen clean, check ingredients"}
+};
+const vocab=[
+["A person who applies for a job is an…","applicant",["employer","applicant","employee"]],
+["Money you receive for your work is your…","salary",["salary","duty","reference"]],
+["A person or company that gives someone a job is an…","employer",["employee","applicant","employer"]],
+["A job that is available is a job…","vacancy",["vacancy","skill","shift"]],
+["Experience you get from previous jobs is…","work experience",["working hours","work experience","education"]],
+["Your responsibilities at work are your…","duties",["qualifications","duties","references"]],
+["A document with questions about you and your experience is an…","application form",["application form","cover letter","contract"]],
+["To ask for a job is to…","apply for a job",["get a salary","apply for a job","work overtime"]],
+["A job for the whole working week is…","full-time",["part-time","full-time","temporary"]],
+["A meeting with an employer to discuss a job is a…","job interview",["job interview","job vacancy","reference"]]
+];
+const interviewQs=["Can you tell me about yourself?","Why would you like this job?","What are your strengths?","Do you have any work experience?","What skills can you bring to this job?","Can you work in a team?","What languages do you speak?","When can you start?","Are you available to work at weekends?","Why should we choose you?"];
+let player="",job="",stage=0,score=0,answers={},vocabAnswers={},interviewAnswers={};
+function show(id){["home","game","teacher"].forEach(x=>document.getElementById(x).classList.toggle("hidden",x!==id))}
+function showHome(){show("home")}
+function showTeacher(){show("teacher");document.getElementById("teacherLogin").classList.remove("hidden");document.getElementById("teacherDashboard").classList.add("hidden")}
+function startGame(){player="";job="";stage=0;score=0;answers={};vocabAnswers={};interviewAnswers={};show("game");renderStage()}
+function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function updateHeader(){document.getElementById("stepLabel").textContent=`Stage ${stage+1} of 4`;document.getElementById("scoreLabel").textContent=score;document.getElementById("playerLabel").textContent=player||"—";document.getElementById("progressBar").style.width=(stage/4*100)+"%"}
+function renderStage(){updateHeader();let c=document.getElementById("stageContent");
+ if(stage===0){c.innerHTML=`<h2>Stage 1 · Choose your vacancy</h2><p class="muted">First, tell us who you are and choose the job you want to apply for.</p><label>Your name or nickname</label><input id="playerName" placeholder="e.g. Alex" value="${safe(player)}"><div class="vacancies">${Object.entries(jobs).map(([n,j])=>`<button class="vacancy ${job===n?"selected":""}" onclick="chooseJob('${n}')"><div class="emoji">${j.emoji}</div><h3>${n}</h3><span class="tag">${j.salary}</span><p><b>Requirements:</b> ${j.requirements}</p><p><b>Duties:</b> ${j.duties}</p></button>`).join("")}</div><div class="actions"><span></span><button onclick="nextFromJob()">Continue →</button></div>`}
+ if(stage===1){c.innerHTML=`<h2>Stage 2 · Vocabulary challenge</h2><p class="muted">Choose the correct word or phrase. 1 point for each correct answer.</p><div id="quiz"></div><div class="actions"><button class="ghost" onclick="prevStage()">← Back</button><button onclick="finishQuiz()">Check answers & continue →</button></div>`;renderQuiz()}
+ if(stage===2){c.innerHTML=`<h2>Stage 3 · Application form</h2><p class="muted">Complete your application. Write short, clear answers in English.</p>
+ <div class="formgrid"><div><label>Full name</label><input id="f_name" placeholder="Your full name" value="${safe(answers.name||player)}"></div><div><label>Position applied for</label><input value="${safe(job)}" disabled></div>
+ <div><label>Education</label><input id="f_education" placeholder="e.g. College student" value="${safe(answers.education||"")}"></div><div><label>Work experience</label><input id="f_experience" placeholder="e.g. No experience yet" value="${safe(answers.experience||"")}"></div>
+ <div><label>Skills</label><input id="f_skills" placeholder="e.g. communication, teamwork" value="${safe(answers.skills||"")}"></div><div><label>Personal qualities</label><input id="f_qualities" placeholder="e.g. friendly, responsible" value="${safe(answers.qualities||"")}"></div>
+ <div><label>Languages</label><input id="f_languages" placeholder="e.g. English, Dutch, Russian" value="${safe(answers.languages||"")}"></div><div><label>Availability</label><select id="f_availability"><option value="">Choose…</option><option ${answers.availability==="Full-time"?"selected":""}>Full-time</option><option ${answers.availability==="Part-time"?"selected":""}>Part-time</option><option ${answers.availability==="Weekends"?"selected":""}>Weekends</option><option ${answers.availability==="Flexible"?"selected":""}>Flexible</option></select></div></div>
+ <label>Why are you interested in this job?</label><textarea id="f_why" placeholder="I am interested in this job because…">${safe(answers.why||"")}</textarea>
+ <div class="actions"><button class="ghost" onclick="prevStage()">← Back</button><button onclick="saveApplication()">Save & continue →</button></div>`}
+ if(stage===3){c.innerHTML=`<h2>Stage 4 · Job interview</h2><p class="muted">You are in the interview. Answer the employer's questions in English. Each answer can earn up to 2 points for relevance and clarity.</p><div id="interview"></div><div class="actions"><button class="ghost" onclick="prevStage()">← Back</button><button onclick="finishGame()">Finish interview →</button></div>`;renderInterview()}
+}
+function chooseJob(n){job=n;renderStage()}
+function nextFromJob(){let p=document.getElementById("playerName").value.trim();if(!p){alert("Please enter your name or nickname.");return}if(!job){alert("Please choose a vacancy.");return}player=p;stage=1;renderStage()}
+function renderQuiz(){document.getElementById("quiz").innerHTML=vocab.map((q,i)=>`<div class="question"><p>${i+1}. ${q[0]}</p><div class="options">${q[2].map(o=>`<button class="option ${vocabAnswers[i]===o?"chosen":""}" onclick="pickAnswer(${i},'${o.replace(/'/g,"\\'")}')">${o}</button>`).join("")}</div></div>`).join("")}
+function pickAnswer(i,o){vocabAnswers[i]=o;renderQuiz()}
+function finishQuiz(){if(Object.keys(vocabAnswers).length<10){alert("Please answer all 10 questions.");return}score=vocab.reduce((s,q,i)=>s+(vocabAnswers[i]===q[1]?1:0),0);stage=2;renderStage()}
+function prevStage(){if(stage>0){stage--;renderStage()}}
+function saveApplication(){let ids=["name","education","experience","skills","qualities","languages","availability","why"];for(let id of ids){let el=document.getElementById("f_"+id);answers[id]=el.value.trim()}if(!answers.name||!answers.education||!answers.skills||!answers.qualities||!answers.why){alert("Please complete your name, education, skills, personal qualities and reason for applying.");return}stage=3;renderStage()}
+function renderInterview(){document.getElementById("interview").innerHTML=interviewQs.map((q,i)=>`<div class="question"><p>${i+1}. ${q}</p><textarea id="iq${i}" placeholder="Write your answer in English…">${safe(interviewAnswers[i]||"")}</textarea></div>`).join("")}
+function finishGame(){let total=0;for(let i=0;i<interviewQs.length;i++){let a=document.getElementById("iq"+i).value.trim();interviewAnswers[i]=a;if(a.length>=15)total+=2;else if(a.length>=5)total+=1}let appFields=["name","education","experience","skills","qualities","languages","availability","why"];let filled=appFields.filter(k=>answers[k]).length;let appScore=Math.round(filled/appFields.length*10);let finalScore=score+appScore+total;let max=40;let result={name:player,job,score:finalScore,max,quizScore:score,applicationScore:appScore,interviewScore:total,answers:{...answers},interview:{...interviewAnswers},date:new Date().toLocaleString()};let all=JSON.parse(localStorage.getItem("jobquest_results")||"[]");all.push(result);localStorage.setItem("jobquest_results",JSON.stringify(all));document.getElementById("progressBar").style.width="100%";document.getElementById("stepLabel").textContent="Quest completed";document.getElementById("stageContent").innerHTML=`<div class="result"><div class="big">🏆</div><div class="step">Your job quest is complete</div><h2>Well done, ${safe(player)}!</h2><p class="muted">You applied for the position of ${safe(job)}.</p><div class="result-score">${finalScore} / ${max}</div><p><b>Vocabulary:</b> ${score}/10 &nbsp;·&nbsp; <b>Application:</b> ${appScore}/10 &nbsp;·&nbsp; <b>Interview:</b> ${total}/20</p><h3>${finalScore>=32?"Excellent applicant! 🌟":finalScore>=23?"Good job! Keep practising. 👍":"Good start! Practice makes progress. 💪"}</h3><p class="muted">Your result has been saved on this device.</p><button onclick="startGame()">Play again</button> <button class="secondary" onclick="showHome()">Home</button></div>`}
+function unlockTeacher(){if(document.getElementById("pin").value!=="2468"){alert("Incorrect PIN.");return}document.getElementById("teacherLogin").classList.add("hidden");document.getElementById("teacherDashboard").classList.remove("hidden");refreshTeacher()}
+function getResults(){return JSON.parse(localStorage.getItem("jobquest_results")||"[]")}
+function refreshTeacher(){let a=getResults();document.getElementById("resultsBody").innerHTML=a.length?a.map(r=>`<tr><td><b>${safe(r.name)}</b></td><td>${safe(r.job)}</td><td><b>${r.score}/${r.max}</b><br><span class="small muted">Vocab ${r.quizScore}/10 · Form ${r.applicationScore}/10 · Interview ${r.interviewScore}/20</span></td><td>${safe(r.date)}</td><td><button class="secondary small" onclick="viewAnswers(${a.indexOf(r)})">View</button></td></tr>`).join(""):`<tr><td colspan="5" class="muted">No completed attempts on this device yet.</td></tr>`}
+function viewAnswers(i){
+ let r=getResults()[Number(i)];
+ if(!r){alert("Could not find this student's saved result. Please refresh the dashboard.");return}
+ const esc=safe;
+ const app=r.answers||{};
+ const appRows=[
+  ["Full name",app.name],["Education",app.education],["Work experience",app.experience],
+  ["Skills",app.skills],["Personal qualities",app.qualities],["Languages",app.languages],
+  ["Availability",app.availability],["Why interested in this job?",app.why]
+ ];
+ let appHtml=appRows.map(([q,a])=>`<div class="answer-row"><div class="answer-question">${esc(q)}</div><div class="answer-text">${esc(a||"Not answered")}</div></div>`).join("");
+ let intHtml=interviewQs.map((q,k)=>`<div class="answer-row"><div class="answer-question">${k+1}. ${esc(q)}</div><div class="answer-text">${esc((r.interview||{})[k]||(r.interview||{})[String(k)]||"Not answered")}</div></div>`).join("");
+ document.getElementById("answersTitle").textContent=`${r.name||"Student"} · ${r.job||"Applicant"}`;
+ document.getElementById("answersDetails").innerHTML=
+  `<div class="answer-section"><h3>Application form</h3>${appHtml}</div>
+   <div class="answer-section"><h3>Interview answers</h3>${intHtml}</div>
+   <p class="scoreline">Score: <b>${Number(r.score)||0}/${Number(r.max)||40}</b> · Vocabulary ${Number(r.quizScore)||0}/10 · Application ${Number(r.applicationScore)||0}/10 · Interview ${Number(r.interviewScore)||0}/20</p>`;
+ document.getElementById("answersModal").classList.remove("hidden");
+}
+function closeAnswers(){document.getElementById("answersModal").classList.add("hidden")}
+function exportCSV(){let a=getResults();if(!a.length){alert("There are no results to export.");return}let rows=[["Name","Vacancy","Total","Max","Vocabulary","Application","Interview","Date","Education","Experience","Skills","Qualities","Languages","Availability","Why this job"],...a.map(r=>[r.name,r.job,r.score,r.max,r.quizScore,r.applicationScore,r.interviewScore,r.date,r.answers.education,r.answers.experience,r.answers.skills,r.answers.qualities,r.answers.languages,r.answers.availability,r.answers.why])];let csv=rows.map(row=>row.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");let blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});let url=URL.createObjectURL(blob);let link=document.createElement("a");link.href=url;link.download="job-quest-results.csv";link.click();URL.revokeObjectURL(url)}
+function clearResults(){if(confirm("Delete all saved results from this browser?")){localStorage.removeItem("jobquest_results");refreshTeacher()}}
+</script>
+</body></html>
